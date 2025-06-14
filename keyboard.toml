@@ -1,35 +1,44 @@
-# Documentation: https://haobogu.github.io/rmk/keyboard_configuration.html
 [keyboard]
 name = "RMK Keyboard"
 product_name = "RMK Keyboard"
 vendor_id = 0x4c4b
 product_id = 0x4643
 manufacturer = "haobo"
-chip = "rp2040"
+chip = "esp32s3"
+usb_enable = true
 
 [matrix]
 # Input and output pins are mandatory
-input_pins = ["PIN_6", "PIN_7", "PIN_8", "PIN_9"]
-output_pins = ["PIN_19", "PIN_20", "PIN_21"]
-# WARNING: Currently row2col/col2row is set in RMK's feature gate, configs here do nothing actually
+input_pins = ["GPIO15", "GPIO18", "GPIO33", "GPIO35", "GPIO36", "GPIO38", "GPIO39", "GPIO40"]
+output_pins = ["GPIO10", "GPIO9", "GPIO8", "GPIO7", "GPIO6", "GPIO5", "GPIO4", "GPIO2", "GPIO11", "GPIO12", "GPIO13", "GPIO14", "GPIO16", "GPIO17", "GPIO34", "GPIO37"]
+# WARNING: Currently row2col/col2row is set in RMK's feature gate, row2col config here is valid ONLY when you're using cloud compilation
+# Checkout documentation here: https://rmk.rs/docs/user_guide/faq.html#my-matrix-is-row2col-the-matrix-doesn-t-work
 # row2col = true
 
 [layout]
-rows = 4
-cols = 3
+rows = 8
+cols = 16
 layers = 2
 keymap = [
     [
-        ["A", "B", "C"],
-        ["Kc1", "Kc2", "Kc3"],
-        ["LCtrl", "MO(1)", "LShift"],
-        ["OSL(1)", "LT(2, Kc9)", "LM(1, LShift | LGui)"]
+        ["_", "F5", "_", "Up", "_", "LAlt", "_", "F6", "'", "_", "G", "_", "F4", "H", "Esc", "_"],
+        ["End", "F9", "_", "Home", "_", "_", "LCtrl", "=", "-", "F8", "5", "F1", "F2", "6", "`", "_"],
+        ["LGUI", "_", "_", "_", "_", "_", "_", "I", "P", "O", "R", "W", "E", "U", "Q", "_"],
+        ["PageUp", "F10", "F11", "PageDown", "F12", "PrintScreen", "_", "8", "0", "9", "4", "2", "3", "7", "1", "_"],
+        ["Menu", "\\", "_", "MO(1)", "_", "_", "_", "K", ";", "L", "F", "S", "D", "J", "A", "_"],
+        ["_", "Enter", "_", "Del", "_", "_", "RCtrl", ",", "_", ".", "V", "X", "C", "M", "Z", "RShift"],
+        ["_", "Space", "Down", "Left", "Down", "RAlt", "_", "_", "/", "_", "B", "_", "_", "N", "_", "_"],
+        ["_", "Backspace", "_", "_", "_", "_", "_", "]", "[", "F7", "T", "CapsLock", "F3", "Y", "Tab", "LShift"],
     ],
     [
-        ["_", "TT(1)", "TG(2)"],
-        ["_", "_", "_"],
-        ["_", "_", "_"],
-        ["_", "_", "_"]
+        ["_", "_", "_", "_", "_", "_", "_", "_", "_", "_", "_", "_", "_", "_", "_", "_"],
+        ["_", "_", "_", "_", "_", "_", "_", "_", "_", "_", "_", "_", "_", "_", "_", "_"],
+        ["_", "_", "_", "_", "_", "_", "_", "_", "_", "_", "_", "_", "_", "_", "_", "_"],
+        ["_", "_", "_", "_", "_", "_", "_", "_", "_", "_", "_", "_", "_", "_", "_", "_"],
+        ["_", "_", "_", "_", "_", "_", "_", "_", "_", "_", "_", "_", "_", "_", "_", "_"],
+        ["_", "_", "_", "_", "_", "_", "_", "_", "_", "_", "_", "_", "_", "_", "_", "_"],
+        ["_", "_", "_", "_", "_", "_", "_", "_", "_", "_", "_", "_", "_", "_", "_", "_"],
+        ["_", "_", "_", "_", "_", "_", "_", "_", "_", "_", "_", "_", "_", "_", "_", "_"],
     ],
 ]
 
@@ -43,8 +52,9 @@ keymap = [
 # numslock.pin = "PA5"
 # numslock.low_active = true
 
-
-
 [storage]
 # Storage feature is enabled by default
 # enabled = false
+
+[ble]
+enabled = true
